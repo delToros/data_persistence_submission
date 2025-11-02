@@ -24,7 +24,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BestScore.text = $"Best Score: {GetCurrentPlayerName()} : 0";
+        BestScore.text = $"Best Score: {GetCurrentPlayerName()} : {DataPersistence.Instance.LoadPlayersScore(GetCurrentPlayerName())}";
 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
@@ -75,6 +75,7 @@ public class MainManager : MonoBehaviour
     public void GameOver()
     {
         m_GameOver = true;
+        DataPersistence.Instance.AddOrUpdateScore(GetCurrentPlayerName(), m_Points);
         GameOverText.SetActive(true);
     }
 

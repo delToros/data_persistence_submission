@@ -11,7 +11,7 @@ public class DataPersistence : MonoBehaviour
     public string playerName;
     public int playerHighScore;
 
-    string path = Application.persistentDataPath + "/savefile.json";
+    string path;
 
     private void Awake()
     {
@@ -24,6 +24,8 @@ public class DataPersistence : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         LoadHighScoreData();
+
+        path = Application.persistentDataPath + "/savefile.json";
     }
 
     // All about saving data to json
